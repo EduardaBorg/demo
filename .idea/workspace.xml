@@ -10,7 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f56da02a-394f-456e-8b88-ce735664e7cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/demo_jar.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../teste1/.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../teste1/.idea/kotlinc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../teste1/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
@@ -29,9 +28,6 @@
       <change afterPath="$PROJECT_DIR$/../teste1/pokemon.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../teste1/teste.kt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../teste1/teste1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/EmployeeManagementToolController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/EmployeeManagementToolController.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
