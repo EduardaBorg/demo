@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="demo:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f56da02a-394f-456e-8b88-ce735664e7cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/employees.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/CustomChoiceDialog.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Employee.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/demo_jar.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../teste1/.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../teste1/.idea/kotlinc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../teste1/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
@@ -28,11 +31,7 @@
       <change afterPath="$PROJECT_DIR$/../teste1/teste1.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/EmployeeManagementTool.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/EmployeeManagementTool.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/EmployeeManagementToolController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/EmployeeManagementToolController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/EmployeeManagementTool.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/EmployeeManagementTool.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +65,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "C:/Users/Eduarda/Downloads/openjfx-20.0.1_windows-x64_bin-sdk.zip",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager"
@@ -81,6 +80,10 @@
     </key>
   </component>
   <component name="RunManager" selected="Kotlin.MainKt (1)">
+    <configuration name="demo.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/demo_jar/demo.jar" />
+      <method v="2" />
+    </configuration>
     <configuration name="MainKt (1)" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.MainKt" />
       <module name="demo" />
@@ -98,6 +101,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Kotlin.MainKt (1)" />
+        <item itemvalue="JAR Application.demo.jar" />
         <item itemvalue="Kotlin.MainKt" />
       </list>
     </recent_temporary>

@@ -61,7 +61,7 @@ class EmployeeManagementToolController : Initializable {
         val name = deleteDialog.showAndWait().orElse(null) ?: return
 
         val foundEmployees = employeeManagementTool.listEmployees().filter {
-            it.name.equals(name, ignoreCase = true)
+            it.name.startsWith(name, ignoreCase = true)
         }
 
         if (foundEmployees.isNotEmpty()) {
@@ -77,7 +77,6 @@ class EmployeeManagementToolController : Initializable {
 
         updateEmployeeList()
     }
-
 
     private fun selectEmployeeToDelete(employees: List<Employee>): Employee? {
         val employeeNames = employees.map { it.name }.distinct()
