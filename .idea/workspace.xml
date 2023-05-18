@@ -5,23 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f56da02a-394f-456e-8b88-ce735664e7cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/cadastramento/EmployeeCell.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/cadastramento/EmployeeManagementTool.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/cadastramento/EmployeeManagementToolController.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/cadastramento/Main.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/EmployeeManagementTool.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/employees.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/CustomChoiceDialog.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Employee.kt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../teste1/.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../teste1/.idea/kotlinc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../teste1/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
@@ -40,6 +26,13 @@
       <change afterPath="$PROJECT_DIR$/../teste1/pokemon.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../teste1/teste.kt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../teste1/teste1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/EmployeeManagementTool.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/EmployeeManagementTool.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/EmployeeManagementToolController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/EmployeeManagementToolController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/EmployeeManagementTool.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/EmployeeManagementTool.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,8 +43,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="Kotlin Class" />
         <option value="FxmlFile" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -59,20 +52,24 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2Pw8AoAJctOYxD9Cs7QxPc7xjcH" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "C:/Users/Eduarda/Downloads/openjfx-20.0.1_windows-x64_bin-sdk.zip",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -83,7 +80,14 @@
       <recent name="C:\Users\Eduarda\Tarefa-Amor\demo\src\main\resources\com\example\demo.cadastramento" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Kotlin.MainKt (1)">
+    <configuration name="MainKt (1)" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.MainKt" />
+      <module name="demo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.cadastramento.MainKt" />
       <module name="demo" />
@@ -93,6 +97,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.MainKt (1)" />
         <item itemvalue="Kotlin.MainKt" />
       </list>
     </recent_temporary>
@@ -107,5 +112,8 @@
       <updated>1684356644591</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

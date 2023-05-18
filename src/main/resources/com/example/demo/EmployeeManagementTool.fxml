@@ -5,10 +5,9 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextInputDialog?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
@@ -26,9 +25,9 @@
         <ListView fx:id="employeeListView" />
     </center>
     <bottom>
-        <HBox>
-            <Button fx:id="buttonRegisterEmployee" text="Cadastrar Funcionário" />
-            <Button fx:id="buttonDeleteEmployee" text="Excluir Funcionário" />
+        <HBox spacing="10">
+        <Button fx:id="buttonRegisterEmployee" onAction="#registerEmployee" text="Cadastrar Funcionário" />
+            <Button fx:id="buttonDeleteEmployee" onAction="#deleteEmployee" text="Excluir Funcionário" />
         </HBox>
     </bottom>
 </BorderPane>

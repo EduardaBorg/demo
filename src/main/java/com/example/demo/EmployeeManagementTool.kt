@@ -1,22 +1,30 @@
 package com.example.demo
 
 import java.io.File
-import java.util.*
-
-data class Employee(val name: String, val position: String, val salary: Double)
+import javafx.scene.control.*
+import javafx.util.Callback
 
 class EmployeeManagementTool {
     private val employees = mutableListOf<Employee>()
     private val FILE_PATH = "employees.txt"
 
     init {
-        loadEmployeesFromFile()
+        try {
+            loadEmployeesFromFile()
+        } catch (e: Exception) {
+            println("Error while loading employees: ${e.message}")
+        }
     }
 
     fun registerEmployee(fullName: String, position: String, salary: Double): Boolean {
         val employee = Employee(fullName, position, salary)
         employees.add(employee)
-        saveEmployeesToFile()
+        try {
+            saveEmployeesToFile()
+        } catch (e: Exception) {
+            println("Error while saving employees: ${e.message}")
+            return false
+        }
         return true
     }
 
@@ -29,10 +37,16 @@ class EmployeeManagementTool {
             it.name.split(" ")[0].equals(name, ignoreCase = true) ||
                     it.name.equals(name, ignoreCase = true)
         }
+
         return if (foundEmployee != null) {
             employees.remove(foundEmployee)
-            saveEmployeesToFile()
-            true
+            try {
+                saveEmployeesToFile()
+                true
+            } catch (e: Exception) {
+                println("Error while saving employees: ${e.message}")
+                false
+            }
         } else {
             false
         }
@@ -67,4 +81,17 @@ class EmployeeManagementTool {
             }
         }
     }
+
+    fun deleteSelectedEmployees(selectedEmployees: List<Employee>): Boolean {
+        employees.removeAll(selectedEmployees)
+        return try {
+            saveEmployeesToFile()
+            true
+        } catch (e: Exception) {
+            println("Error while saving employees: ${e.message}")
+            false
+        }
+
+    }
+
 }

@@ -9,7 +9,7 @@ class Main : Application() {
     override fun start(primaryStage: Stage) {
         primaryStage.title = "Employee Management Tool"
 
-        val loader = FXMLLoader(Main::class.java.getResource("com/example/demo/EmployeeManagementTool.fxml"))
+        val loader = FXMLLoader(Main::class.java.getResource("EmployeeManagementTool.fxml"))
         primaryStage.scene = Scene(loader.load())
 
         primaryStage.show()

@@ -2,15 +2,13 @@ package com.example.demo
 
 import javafx.fxml.FXML
 import javafx.fxml.Initializable
-import javafx.scene.control.ListCell
-import javafx.scene.control.ListView
-import javafx.scene.control.MenuItem
-import javafx.scene.control.TextInputDialog
+import javafx.scene.control.*
 import javafx.util.Callback
 import java.net.URL
 import java.util.*
 
 class EmployeeManagementToolController : Initializable {
+
     @FXML
     private lateinit var employeeListView: ListView<Employee>
 
@@ -35,7 +33,7 @@ class EmployeeManagementToolController : Initializable {
         updateEmployeeList()
     }
 
-    private fun registerEmployee() {
+    fun registerEmployee() {
         val fullNameDialog = TextInputDialog()
         fullNameDialog.title = "Cadastro de funcionário"
         fullNameDialog.headerText = "Nome completo:"
@@ -56,22 +54,51 @@ class EmployeeManagementToolController : Initializable {
         updateEmployeeList()
     }
 
-    private fun deleteEmployee() {
+    fun deleteEmployee() {
         val deleteDialog = TextInputDialog()
         deleteDialog.title = "Excluir funcionário"
         deleteDialog.headerText = "Digite o nome do funcionário a ser excluído:"
         val name = deleteDialog.showAndWait().orElse(null) ?: return
 
-        employeeManagementTool.deleteEmployee(name)
+        val foundEmployees = employeeManagementTool.listEmployees().filter {
+            it.name.equals(name, ignoreCase = true)
+        }
+
+        if (foundEmployees.isNotEmpty()) {
+            val selectedEmployee = selectEmployeeToDelete(foundEmployees)
+            if (selectedEmployee != null) {
+                employeeManagementTool.deleteSelectedEmployees(listOf(selectedEmployee))
+            } else {
+                println("Nenhum funcionário selecionado para exclusão.")
+            }
+        } else {
+            println("Nenhum funcionário encontrado com o nome especificado.")
+        }
 
         updateEmployeeList()
     }
 
-    private fun exitApplication() {
+
+    private fun selectEmployeeToDelete(employees: List<Employee>): Employee? {
+        val employeeNames = employees.map { it.name }.distinct()
+        val selectionDialog = ChoiceDialog<String>(employeeNames.first(), employeeNames)
+        selectionDialog.title = "Excluir funcionário"
+        selectionDialog.headerText = "Foram encontrados vários funcionários com o mesmo nome. Selecione o funcionário para excluir:"
+
+        val result = selectionDialog.showAndWait()
+        if (result.isPresent) {
+            val selectedName = result.get()
+            return employees.find { it.name == selectedName }
+        }
+
+        return null
+    }
+
+    fun exitApplication() {
         System.exit(0)
     }
 
-    private fun updateEmployeeList() {
+    fun updateEmployeeList() {
         employeeListView.items.clear()
         employeeListView.items.addAll(employeeManagementTool.listEmployees())
     }

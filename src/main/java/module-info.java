@@ -4,5 +4,5 @@ module com.example.demo {
     requires kotlin.stdlib;
 
     opens com.example.demo to javafx.fxml;
-    exports com.example.demo.cadastramento;
+    exports com.example.demo;
 }
