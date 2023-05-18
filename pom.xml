@@ -120,7 +120,7 @@
                         <configuration>
                             <sourceDirs>
                                 <source>src/main/kotlin</source>
-                                <source>src/main/java</source>
+                                <source>src/main/kotlin</source>
                             </sourceDirs>
                             <jvmTarget>9</jvmTarget> <!-- Adicionado -->
                         </configuration>
