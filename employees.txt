@@ -1,0 +1,2 @@
+Leonardo,eu,1234.0
+blah,minha pica,123.0

@@ -1,8 +1,9 @@
 package com.example.demo
 
 import java.io.File
-import javafx.scene.control.*
-import javafx.util.Callback
+import javafx.scene.control.Alert
+import javafx.scene.control.Alert.AlertType
+
 
 class EmployeeManagementTool {
     private val employees = mutableListOf<Employee>()
@@ -12,7 +13,7 @@ class EmployeeManagementTool {
         try {
             loadEmployeesFromFile()
         } catch (e: Exception) {
-            println("Error while loading employees: ${e.message}")
+            Alert(AlertType.ERROR, "Error while loading employees: ${e.message}").showAndWait()
         }
     }
 
@@ -22,7 +23,7 @@ class EmployeeManagementTool {
         try {
             saveEmployeesToFile()
         } catch (e: Exception) {
-            println("Error while saving employees: ${e.message}")
+            Alert(AlertType.ERROR, "Error while saving employees: ${e.message}").showAndWait()
             return false
         }
         return true
@@ -32,10 +33,9 @@ class EmployeeManagementTool {
         return employees
     }
 
-    fun deleteEmployee(name: String): Boolean {
+    fun deleteEmployee(name: Employee): Boolean {
         val foundEmployee = employees.find {
-            it.name.split(" ")[0].equals(name, ignoreCase = true) ||
-                    it.name.equals(name, ignoreCase = true)
+            it.name.startsWith(name.name, ignoreCase = true)
         }
 
         return if (foundEmployee != null) {
@@ -44,7 +44,7 @@ class EmployeeManagementTool {
                 saveEmployeesToFile()
                 true
             } catch (e: Exception) {
-                println("Error while saving employees: ${e.message}")
+                Alert(AlertType.ERROR, "Error while saving employees: ${e.message}").showAndWait()
                 false
             }
         } else {
@@ -88,7 +88,7 @@ class EmployeeManagementTool {
             saveEmployeesToFile()
             true
         } catch (e: Exception) {
-            println("Error while saving employees: ${e.message}")
+            Alert(AlertType.ERROR, "Error while saving employees: ${e.message}").showAndWait()
             false
         }
 

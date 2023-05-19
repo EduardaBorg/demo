@@ -1,104 +1,124 @@
-package com.example.demo
+package com.example.demo;
 
 import javafx.fxml.FXML
 import javafx.fxml.Initializable
 import javafx.scene.control.*
-import javafx.util.Callback
+import javafx.scene.control.cell.TextFieldListCell
+import javafx.scene.control.Alert.AlertType
+import javafx.scene.control.ButtonType
+import javafx.util.StringConverter
 import java.net.URL
 import java.util.*
+import kotlin.system.exitProcess
 
 class EmployeeManagementToolController : Initializable {
+
+    @FXML
+    private lateinit var errorLabel: Label
 
     @FXML
     private lateinit var employeeListView: ListView<Employee>
 
     @FXML
-    private lateinit var menuItemRegisterEmployee: MenuItem
+    private lateinit var searchTextField: TextField
 
     @FXML
-    private lateinit var menuItemDeleteEmployee: MenuItem
+    private lateinit var nameTextField: TextField
 
     @FXML
-    private lateinit var menuItemExit: MenuItem
+    private lateinit var jobTextField: TextField
+
+    @FXML
+    private lateinit var salaryTextField: TextField
+
+    @FXML
+    private lateinit var buttonDeleteEmployee: Button
 
     private val employeeManagementTool = EmployeeManagementTool()
 
     override fun initialize(location: URL?, resources: ResourceBundle?) {
-        employeeListView.cellFactory = Callback<ListView<Employee>, ListCell<Employee>> { EmployeeCell() }
+        employeeListView.cellFactory = TextFieldListCell.forListView(object : StringConverter<Employee>() {
+            override fun toString(employee: Employee?): String {
+                return if (employee != null) {
+                    "${employee.name}, ${employee.position}, ${employee.salary}"
+                } else {
+                    ""
+                }
+            }
 
-        menuItemRegisterEmployee.setOnAction { registerEmployee() }
-        menuItemDeleteEmployee.setOnAction { deleteEmployee() }
-        menuItemExit.setOnAction { exitApplication() }
+            override fun fromString(string: String?): Employee? {
+                return null
+            }
+        })
+
+
+
+
+        searchTextField.textProperty().addListener { _, _, newValue ->
+            filterEmployeeList(newValue)
+        }
+
+        buttonDeleteEmployee.setOnAction { deleteSelectedEmployee() }
 
         updateEmployeeList()
     }
 
     fun registerEmployee() {
-        val fullNameDialog = TextInputDialog()
-        fullNameDialog.title = "Cadastro de funcionário"
-        fullNameDialog.headerText = "Nome completo:"
-        val fullName = fullNameDialog.showAndWait().orElse(null) ?: return
+        val fullName = nameTextField.text
+        val position = jobTextField.text
+        val salary = salaryTextField.text.toDoubleOrNull()
 
-        val positionDialog = TextInputDialog()
-        positionDialog.title = "Cadastro de funcionário"
-        positionDialog.headerText = "Cargo:"
-        val position = positionDialog.showAndWait().orElse(null) ?: return
-
-        val salaryDialog = TextInputDialog()
-        salaryDialog.title = "Cadastro de funcionário"
-        salaryDialog.headerText = "Salário:"
-        val salary = salaryDialog.showAndWait().orElse(null)?.toDoubleOrNull() ?: return
+        if (fullName.isNullOrBlank() || position.isNullOrBlank() || salary == null) {
+            errorLabel.text = "Preencha todos os campos corretamente."
+            return
+        }
 
         employeeManagementTool.registerEmployee(fullName, position, salary)
 
+        clearFields()
         updateEmployeeList()
     }
 
-    fun deleteEmployee() {
-        val deleteDialog = TextInputDialog()
-        deleteDialog.title = "Excluir funcionário"
-        deleteDialog.headerText = "Digite o nome do funcionário a ser excluído:"
-        val name = deleteDialog.showAndWait().orElse(null) ?: return
-
-        val foundEmployees = employeeManagementTool.listEmployees().filter {
-            it.name.startsWith(name, ignoreCase = true)
-        }
-
-        if (foundEmployees.isNotEmpty()) {
-            val selectedEmployee = selectEmployeeToDelete(foundEmployees)
-            if (selectedEmployee != null) {
-                employeeManagementTool.deleteSelectedEmployees(listOf(selectedEmployee))
-            } else {
-                println("Nenhum funcionário selecionado para exclusão.")
-            }
-        } else {
-            println("Nenhum funcionário encontrado com o nome especificado.")
-        }
-
-        updateEmployeeList()
+    private fun filterEmployeeList(searchTerm: String) {
+        val filteredEmployees = employeeManagementTool.listEmployees()
+            .filter { it.name.startsWith(searchTerm, ignoreCase = true) }
+        employeeListView.items.clear()
+        employeeListView.items.addAll(filteredEmployees)
     }
 
-    private fun selectEmployeeToDelete(employees: List<Employee>): Employee? {
-        val employeeNames = employees.map { it.name }.distinct()
-        val selectionDialog = ChoiceDialog<String>(employeeNames.first(), employeeNames)
-        selectionDialog.title = "Excluir funcionário"
-        selectionDialog.headerText = "Foram encontrados vários funcionários com o mesmo nome. Selecione o funcionário para excluir:"
+    fun deleteSelectedEmployee() {
+        val selectedEmployee = employeeListView.selectionModel.selectedItem
 
-        val result = selectionDialog.showAndWait()
-        if (result.isPresent) {
-            val selectedName = result.get()
-            return employees.find { it.name == selectedName }
+        if (selectedEmployee == null) {
+            val alert = Alert(AlertType.WARNING)
+            alert.title = "Nenhum usuário selecionado"
+            alert.headerText = "Selecione um usuário para excluí-lo."
+            alert.showAndWait()
+            return
         }
 
-        return null
+        val confirmationAlert = Alert(AlertType.CONFIRMATION)
+        confirmationAlert.title = "Confirmar exclusão"
+        confirmationAlert.headerText = "Deseja realmente excluir o funcionário selecionado?"
+        confirmationAlert.contentText = selectedEmployee.name
+
+        val result = confirmationAlert.showAndWait()
+        if (result.orElse(null) == ButtonType.OK) {
+            employeeManagementTool.deleteEmployee(selectedEmployee)
+            updateEmployeeList()
+        }
     }
 
-    fun exitApplication() {
-        System.exit(0)
-    }
 
-    fun updateEmployeeList() {
+    private fun updateEmployeeList() {
         employeeListView.items.clear()
         employeeListView.items.addAll(employeeManagementTool.listEmployees())
+    }
+
+    private fun clearFields() {
+        nameTextField.clear()
+        jobTextField.clear()
+        salaryTextField.clear()
+        errorLabel.text = ""
     }
 }
